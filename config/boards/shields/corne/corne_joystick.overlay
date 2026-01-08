@@ -1,0 +1,20 @@
+/ {
+    chosen {
+        zmk,pointing = &joystick;
+    };
+};
+
+&adc {
+    joystick: joystick {
+        compatible = "zmk,pointing-adc";
+        label = "JOYSTICK";
+
+        x-input = <&adc 0>;
+        y-input = <&adc 1>;
+
+        invert-x;
+        invert-y;
+
+        resolution = <10>;
+    };
+};
