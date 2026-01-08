@@ -1,0 +1,15 @@
+/ {
+    chosen {
+        zmk,encoder = &encoder0;
+    };
+};
+
+&gpio0 {
+    encoder0: encoder_0 {
+        compatible = "zmk,behavior-encoder";
+        label = "ENCODER_0";
+        gpios = <&gpio0 29 GPIO_ACTIVE_LOW>,
+                <&gpio0 28 GPIO_ACTIVE_LOW>;
+        resolution = <4>;
+    };
+};
