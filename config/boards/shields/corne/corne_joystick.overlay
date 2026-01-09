@@ -9,8 +9,8 @@
         compatible = "zmk,pointing-adc";
         label = "JOYSTICK";
 
-        x-input = <&adc 0>;
-        y-input = <&adc 1>;
+        x-input = <&adc 0>; /* A0 / P0.02 */
+        y-input = <&adc 1>; /* A1 / P0.03 */
 
         invert-x;
         invert-y;
