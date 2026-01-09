@@ -4,11 +4,13 @@
     };
 };
 
+/* ================= JOYSTICK (RIGHT HALF) ================= */
 &adc {
     joystick: joystick {
         compatible = "zmk,pointing-adc";
         label = "JOYSTICK";
 
+        /* Typeractive standard joystick wiring */
         x-input = <&adc 0>; /* A0 / P0.02 */
         y-input = <&adc 1>; /* A1 / P0.03 */
 
