@@ -4,16 +4,11 @@
     };
 };
 
-/* ================= ROTARY ENCODER (LEFT HALF) ================= */
 &gpio0 {
     encoder0: encoder_0 {
         compatible = "zmk,behavior-encoder";
         label = "ENCODER_0";
-
-        /* Typeractive standard encoder pins */
-        gpios = <&gpio0 29 GPIO_ACTIVE_LOW>,
-                <&gpio0 28 GPIO_ACTIVE_LOW>;
-
+        gpios = <&gpio0 29 GPIO_ACTIVE_LOW>, <&gpio0 28 GPIO_ACTIVE_LOW>;
         resolution = <4>;
     };
 };
