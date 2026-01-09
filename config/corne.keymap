@@ -1,7 +1,8 @@
 /*
- * Copyright (c) 2020 The ZMK Contributors
+ * Eyelash Corne Keymap derived from Lily58
  *
- * SPDX-License-Identifier: MIT
+ * Rotary encoder = LEFT half, extra key for press
+ * Joystick = RIGHT half, extra keys
  */
 
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1500
@@ -25,11 +26,9 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HRM";
             #binding-cells = <2>;
-
             tapping-term-ms = <230>;
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
-
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <1 2 3 4 7 8 9 10>;
         };
@@ -45,19 +44,25 @@
             display-name = "Base";
 
             bindings = <
-&kp TAB        &kp Q              &kp W              &kp E               &kp R               &kp T                     &kp Y               &kp U               &kp I               &kp O               &kp P               &kp BSPC
-&kp LCTRL      &hrm LALT A        &hrm LGUI S        &hrm LSHFT D         &hrm LCTRL F         &kp G                     &kp H               &hrm RCTRL J        &hrm RSHFT K        &hrm RGUI L         &hrm RALT SEMI      &kp SQT
-&shift_caps    &kp Z              &kp X              &kp C               &kp V               &kp B                     &kp N               &kp M               &kp COMMA           &kp DOT             &kp FSLH            &kp RSHFT
-                                &kp C_MUTE          &lt 1 SPACE           &lt 2 ENTER
-                                &mo 3               &kp BSPC             &mo 4
+/* LEFT half */ 
+&kp TAB        &kp Q              &kp W              &kp E               &kp R               &kp T
+&kp LCTRL      &hrm LALT A        &hrm LGUI S        &hrm LSHFT D        &hrm LCTRL F        &kp G
+&shift_caps    &kp Z              &kp X              &kp C               &kp V               &kp B
+&kp C_MUTE     &lt 1 SPACE        &lt 2 ENTER
+
+/* RIGHT half */
+&kp Y          &kp U              &kp I              &kp O               &kp P               &kp BSPC
+&kp H          &hrm RCTRL J       &hrm RSHFT K       &hrm RGUI L         &hrm RALT SEMI      &kp SQT
+&kp N          &kp M              &kp COMMA          &kp DOT             &kp FSLH            &kp RSHFT
+&mo 3          &kp BSPC           &mo 4
             >;
 
-            /* Rotary encoder */
+            /* Rotary encoder rotation (LEFT) */
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         /* =========================================================
-         * ARROWS / NAV
+         * NAVIGATION / ARROWS
          * ========================================================= */
         arrows {
             display-name = "Nav";
@@ -81,8 +86,8 @@
 
             bindings = <
 &trans &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS &kp STAR &kp LPAR &kp RPAR &trans
-&trans &kp GRAVE &kp TILDE &kp PIPE &kp BSLH &trans  &trans &kp MINUS &kp EQUAL &kp LBKT &kp RBKT &trans
-&trans &trans &trans &trans &trans &trans            &trans &trans &trans &trans &trans &trans
+&trans &kp GRAVE &kp TILDE &kp PIPE &kp BSLH &trans     &trans &kp MINUS &kp EQUAL &kp LBKT &kp RBKT &trans
+&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
                      &trans &trans &trans
                      &trans &trans &trans
             >;
@@ -110,6 +115,7 @@
             display-name = "Mouse";
 
             bindings = <
+/* RIGHT half joystick buttons */
 &trans &mkp MB1 &mkp MB2 &mkp MB3 &mkp MB4 &mkp MB5     &trans &trans &trans &trans &trans &trans
 &trans &msc SCRL_UP &trans &trans &trans &trans         &trans &mmv MOVE_UP &trans &trans &trans &trans
 &trans &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_RIGHT &trans &trans
